@@ -1,0 +1,20 @@
+transaksi = []
+
+def tambahan transaksi():
+    """Menambah transaksi baru ke daftar transaksi"""
+    print("\n=== Tambah Transaksi ===")
+
+    jenis = input("Jenis (Pemasukan/Pengeluaran): ").capitalize()
+    if jenis not in ["Pemasukan", "Pengeluaran"]:
+        print("❌ Jenis tidak valid!")
+        return
+
+    try:
+        nominal = float(input("Nominal (Rp): "))
+        if nominal <= 0:
+            raise ValueError
+    except ValueError:
+        print("❌ Nominal harus angka lebih dari 0!")
+        return
+
+    ket = input("Keterangan: ")
