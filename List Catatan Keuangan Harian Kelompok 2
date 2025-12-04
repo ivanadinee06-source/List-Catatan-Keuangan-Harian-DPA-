@@ -1,9 +1,9 @@
+
+
 transaksi = []
 
-def tambahan transaksi():
-    """Menambah transaksi baru ke daftar transaksi"""
+def tambah_transaksi():
     print("\n=== Tambah Transaksi ===")
-
     jenis = input("Jenis (Pemasukan/Pengeluaran): ").capitalize()
     if jenis not in ["Pemasukan", "Pengeluaran"]:
         print("❌ Jenis tidak valid!")
@@ -18,6 +18,54 @@ def tambahan transaksi():
         return
 
     ket = input("Keterangan: ")
-
     transaksi.append((jenis, nominal, ket))
-    print("✅")
+    print("✅ Transaksi berhasil ditambahkan!\n")
+
+def tampilkan_transaksi():
+    print("\n=== Daftar Transaksi ===")
+    if not transaksi:
+        print("Belum ada transaksi.")
+        return
+    for i, (jenis, nominal, ket) in enumerate(transaksi, start=1):
+        print(f"{i}. {jenis} - Rp{nominal:,.0f} ({ket})")
+
+def hitung_saldo():
+    saldo = 0
+    for jenis, nominal, _ in transaksi:
+        if jenis == "Pemasukan":
+            saldo += nominal
+        else:
+            saldo -= nominal
+    print(f"\n💰 Saldo Saat Ini: Rp{saldo:,.0f}")
+
+def hapus_semua():
+    transaksi.clear()
+    print("⚠️ Semua transaksi telah dihapus.\n")
+
+def menu():
+    while True:
+        print("\n====== MENU ======")
+        print("1. Tambah Transaksi")
+        print("2. Lihat Transaksi")
+        print("3. Lihat Saldo")
+        print("4. Hapus Semua Transaksi")
+        print("5. Keluar")
+
+        pilihan = input("Pilih menu (1-5): ")
+
+        if pilihan == "1":
+            tambah_transaksi()
+        elif pilihan == "2":
+            tampilkan_transaksi()
+        elif pilihan == "3":
+            hitung_saldo()
+        elif pilihan == "4":
+            hapus_semua()
+        elif pilihan == "5":
+            print("👋 Terima kasih! Program selesai.")
+            break
+        else:
+            print("❌ Pilihan tidak valid!")
+
+if __name__ == "__main__":
+    menu()
