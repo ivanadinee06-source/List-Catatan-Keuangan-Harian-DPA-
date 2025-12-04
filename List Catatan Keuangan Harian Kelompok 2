@@ -6,7 +6,7 @@ def tambah_transaksi():
     print("\n=== Tambah Transaksi ===")
     jenis = input("Jenis (Pemasukan/Pengeluaran): ").capitalize()
     if jenis not in ["Pemasukan", "Pengeluaran"]:
-        print("❌ Jenis tidak valid!")
+        print("Jenis tidak valid!")
         return
 
     try:
@@ -14,12 +14,12 @@ def tambah_transaksi():
         if nominal <= 0:
             raise ValueError
     except ValueError:
-        print("❌ Nominal harus angka lebih dari 0!")
+        print("Nominal harus angka lebih dari 0!")
         return
 
     ket = input("Keterangan: ")
     transaksi.append((jenis, nominal, ket))
-    print("✅ Transaksi berhasil ditambahkan!\n")
+    print("Transaksi berhasil ditambahkan!\n")
 
 def tampilkan_transaksi():
     print("\n=== Daftar Transaksi ===")
@@ -36,11 +36,11 @@ def hitung_saldo():
             saldo += nominal
         else:
             saldo -= nominal
-    print(f"\n💰 Saldo Saat Ini: Rp{saldo:,.0f}")
+    print(f"\n Saldo Saat Ini: Rp{saldo:,.0f}")
 
 def hapus_semua():
     transaksi.clear()
-    print("⚠️ Semua transaksi telah dihapus.\n")
+    print("Semua transaksi telah dihapus.\n")
 
 def menu():
     while True:
@@ -62,10 +62,10 @@ def menu():
         elif pilihan == "4":
             hapus_semua()
         elif pilihan == "5":
-            print("👋 Terima kasih! Program selesai.")
+            print("Terima kasih! Program selesai.")
             break
         else:
-            print("❌ Pilihan tidak valid!")
+            print("Pilihan tidak valid!")
 
 if __name__ == "__main__":
     menu()
