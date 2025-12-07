@@ -75,6 +75,31 @@ def edit_transaksi():
         ket_baru = ket_lama
     transaksi[nomor - 1] = (jenis_baru, nominal_baru, ket_baru)
     print("Transaksi berhasil diedit!\n"
+
+def hapus_satu():
+    print("\n=== Hapus Satu Transaksi ===")
+    if not transaksi:
+        print("Belum ada transaksi.")
+        return
+    tampilkan_transaksi()
+    try:
+        nomor = int(input("Masukkan nomor transaksi yang ingin dihapus: ")
+    except ValueError:
+        print("Input harus angka!")
+        return
+    if nomor < 1 or nomor > len(transaksi):
+        print("Nomor tidak valid!")
+        return
+
+    baru =[]
+    for i in range(len(transaksi)):
+        if i != nomor - 1:
+            baru.append(transaksi[i])
+
+    transaksi.clear()
+    transaksi.extend(baru)
+
+    print("Transaksi berhasil dihapus\n")
     
 def menu():
     while True:
