@@ -42,6 +42,40 @@ def hapus_semua():
     transaksi.clear()
     print("Semua transaksi telah dihapus.\n")
 
+def edit_transaksi():
+    print("\n=== Edit Transaksi ===")
+    if not transaksi:
+        print("Belum ada transaksi.")
+        return
+    tampilkan_transaksi()
+    try:
+        nomor = int(input("Masukkan nomor transaksi yang akan diedit: "))
+    except ValueError:
+        print("Nomor tidak valid!")
+        return
+    jenis_lama, nominal_lama, ket_lama = transaksi[nomor - 1]
+    print("Tekan Enter jika tidak ingin mengubah nilai.")
+    jenis_baru = input(f"Jenis [{jenis_lama}]: ")
+    if jenis_baru == ""
+        jenis_baru = jenis_lama
+    else:
+        jenis_baru = jenis_baru.capitalize()
+        if jenis_baru not in ["Pemasukan", "Pengeluaran"]:
+            jenis_baru = jenis_lama
+    nominal_input = input(f"Nominal [{nominal_lama}]: ")
+    if nominal_input == ""
+        nominal_baru = nominal_lama
+    else:
+        try:
+            nominal_baru = float(nominal_input)
+        except ValueError:
+            nominal_baru = nominal_lama
+    ket_baru = input(f"Keterangan [{ket_lama}]: ")
+    if ket_baru == "":
+        ket_baru = ket_lama
+    transaksi[nomor - 1] = (jenis_baru, nominal_baru, ket_baru)
+    print("Transaksi berhasil diedit!\n"
+    
 def menu():
     while True:
         print("\n====== MENU ======")
