@@ -56,14 +56,14 @@ def edit_transaksi():
     jenis_lama, nominal_lama, ket_lama = transaksi[nomor - 1]
     print("Tekan Enter jika tidak ingin mengubah nilai.")
     jenis_baru = input(f"Jenis [{jenis_lama}]: ")
-    if jenis_baru == ""
+    if jenis_baru == "":
         jenis_baru = jenis_lama
     else:
         jenis_baru = jenis_baru.capitalize()
         if jenis_baru not in ["Pemasukan", "Pengeluaran"]:
             jenis_baru = jenis_lama
     nominal_input = input(f"Nominal [{nominal_lama}]: ")
-    if nominal_input == ""
+    if nominal_input == "":
         nominal_baru = nominal_lama
     else:
         try:
@@ -74,7 +74,7 @@ def edit_transaksi():
     if ket_baru == "":
         ket_baru = ket_lama
     transaksi[nomor - 1] = (jenis_baru, nominal_baru, ket_baru)
-    print("Transaksi berhasil diedit!\n"
+    print("Transaksi berhasil diedit!\n")
 
 def hapus_satu():
     print("\n=== Hapus Satu Transaksi ===")
@@ -83,7 +83,7 @@ def hapus_satu():
         return
     tampilkan_transaksi()
     try:
-        nomor = int(input("Masukkan nomor transaksi yang ingin dihapus: ")
+        nomor = int(input("Masukkan nomor transaksi yang ingin dihapus: "))
     except ValueError:
         print("Input harus angka!")
         return
