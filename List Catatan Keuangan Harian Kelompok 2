@@ -100,6 +100,20 @@ def hapus_satu():
     transaksi.extend(baru)
 
     print("Transaksi berhasil dihapus\n")
+
+def cari_transaksi():
+    print("\n=== Cari Transaksi ===")
+    if not transaksi:
+        print("Belum ada transaksi.")
+        return
+
+    kata = input("Cari apa: ")
+
+    print("\nHasil Pencarian:")
+    for i in range(len(transaksi)):
+        jenis, nominal, ket = transaksi[i]
+        if kata in ket:
+            print(f"{i+1}. {jenis} - Rp{nominal:,.0f} ({ket})")
     
 def menu():
     while True:
@@ -108,9 +122,12 @@ def menu():
         print("2. Lihat Transaksi")
         print("3. Lihat Saldo")
         print("4. Hapus Semua Transaksi")
-        print("5. Keluar")
+        print("5. Edit Transaksi")
+        print("6. Hapus Satu Transaksi")
+        print("7. Cari Transaksi")
+        print("8. Keluar")
 
-        pilihan = input("Pilih menu (1-5): ")
+        pilihan = input("Pilih menu (1-8): ")
 
         if pilihan == "1":
             tambah_transaksi()
@@ -121,6 +138,12 @@ def menu():
         elif pilihan == "4":
             hapus_semua()
         elif pilihan == "5":
+            edit_transaksi()
+        elif pilihan == "6":
+            hapus_satu()
+        elif pilihan == "7":
+            cari_transaksi()
+        elif pilihan == "8":
             print("Terima kasih! Program selesai.")
             break
         else:
